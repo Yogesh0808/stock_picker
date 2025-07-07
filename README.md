@@ -1,19 +1,19 @@
 <div align="center" id="top"> 
   <img src="./.github/app.gif" alt="Smart Investment Analyzer" />
   &#xa0;
-  <!-- <a href="https://smart-investment-analyzer.netlify.app">Demo</a> -->
+  <a href="https://smart-investment-analyzer.netlify.app">Demo</a>
 </div>
 
 <h1 align="center">Smart Investment Analyzer</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/Yogesh0808/smart-investment-analyzer?color=56BEB8">
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/Yogesh0808/smart-investment-analyzer?color=56BEB8">
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Yogesh0808/smart-investment-analyzer?color=56BEB8">
-  <img alt="License" src="https://img.shields.io/github/license/Yogesh0808/smart-investment-analyzer?color=56BEB8">
-  <img alt="Github issues" src="https://img.shields.io/github/issues/Yogesh0808/smart-investment-analyzer?color=56BEB8" />
-  <img alt="Github forks" src="https://img.shields.io/github/forks/Yogesh0808/smart-investment-analyzer?color=56BEB8" />
-  <img alt="Github stars" src="https://img.shields.io/github/stars/Yogesh0808/smart-investment-analyzer?color=56BEB8" />
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/Yogesh0808/stock_picker?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/Yogesh0808/stock_picker?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Yogesh0808/stock_picker?color=56BEB8">
+  <img alt="License" src="https://img.shields.io/github/license/Yogesh0808/stock_picker?color=56BEB8">
+  <img alt="Github issues" src="https://img.shields.io/github/issues/Yogesh0808/stock_picker?color=56BEB8" />
+  <img alt="Github forks" src="https://img.shields.io/github/forks/Yogesh0808/stock_picker?color=56BEB8" />
+  <img alt="Github stars" src="https://img.shields.io/github/stars/Yogesh0808/stock_picker?color=56BEB8" />
 </p>
 
 <!-- Status -->
@@ -75,49 +75,9 @@ Before starting :checkered_flag:, you need to have the following installed:
 - [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/) - Package manager
 - A modern web browser (Chrome, Firefox, Safari, Edge)
 
-## :checkered_flag: Starting ##
-
-```bash
-# Clone this project
-$ git clone https://github.com/Yogesh0808/smart-investment-analyzer
-
-# Access the project directory
-$ cd smart-investment-analyzer
-
-# Install dependencies (if using a build process)
-$ npm install
-# OR
-$ yarn install
-
-# For development with live reload
-$ npm run dev
-# OR
-$ yarn dev
-
-# For production build
-$ npm run build
-# OR
-$ yarn build
-
-# The application will be available at http://localhost:3000
-```
-
 ### Alternative: Direct Usage
 
-If you prefer to run the application directly without a build process:
-
-```bash
-# Clone the repository
-$ git clone https://github.com/Yogesh0808/smart-investment-analyzer
-
-# Navigate to the project
-$ cd smart-investment-analyzer
-
-# Open index.html in your browser
-$ open index.html
-# OR use a local server
-$ python -m http.server 8000
-```
+If you prefer to run the application directly without a build process
 
 ## :computer: Usage ##
 
