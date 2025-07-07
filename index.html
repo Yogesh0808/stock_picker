@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Strategy & Stock Analysis Framework</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1em;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f8f9fa;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .risk-warning {
+            background: #ffe6e6;
+            border: 2px solid #e74c3c;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .risk-warning h3 {
+            color: #c0392b;
+            margin-top: 0;
+        }
+        
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .strategy-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #3498db;
+        }
+        
+        .strategy-card h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        
+        .calculator {
+            background: #e8f5e8;
+            border: 2px solid #27ae60;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .calculator input, .calculator select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .calculator button {
+            background: #27ae60;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .calculator button:hover {
+            background: #219a52;
+            transform: translateY(-2px);
+        }
+        
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background: #d4edda;
+            border-radius: 5px;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .portfolio-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .portfolio-table th, .portfolio-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .portfolio-table th {
+            background: #3498db;
+            color: white;
+        }
+        
+        .portfolio-table tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .stock-analysis {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .checklist {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .checklist ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .checklist li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .checklist li:before {
+            content: "✓";
+            color: #27ae60;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .growth-chart {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Investment Strategy & Analysis Framework</h1>
+            <p>Your Complete Guide to Smart Investing with ₹7,000-9,000</p>
+        </div>
+        
+        <div class="risk-warning">
+            <h3>⚠️ Important Risk Disclosure</h3>
+            <p><strong>READ THIS CAREFULLY:</strong> All investments carry risk of loss. Past performance doesn't guarantee future results. This is educational content, not financial advice. Never invest money you can't afford to lose. Consider consulting a qualified financial advisor before making investment decisions.</p>
+        </div>
+        
+        <div class="section">
+            <h2>💡 Investment Strategy Overview</h2>
+            <p>Based on current market conditions and your budget of ₹7,000-9,000, here's a structured approach to maximize your returns while managing risk:</p>
+            
+            <div class="strategy-grid">
+                <div class="strategy-card">
+                    <h3>🎯 Strategy 1: Aggressive Growth</h3>
+                    <p><strong>Risk Level:</strong> High</p>
+                    <p><strong>Target Return:</strong> 20-40% annually</p>
+                    <p><strong>Allocation:</strong></p>
+                    <ul>
+                        <li>70% Growth Stocks (Small/Mid Cap)</li>
+                        <li>20% Technology Stocks</li>
+                        <li>10% Emergency Buffer</li>
+                    </ul>
+                </div>
+                
+                <div class="strategy-card">
+                    <h3>⚖️ Strategy 2: Balanced Growth</h3>
+                    <p><strong>Risk Level:</strong> Moderate</p>
+                    <p><strong>Target Return:</strong> 12-25% annually</p>
+                    <p><strong>Allocation:</strong></p>
+                    <ul>
+                        <li>50% Large Cap Stocks</li>
+                        <li>30% Mid Cap Stocks</li>
+                        <li>20% ETFs/Index Funds</li>
+                    </ul>
+                </div>
+                
+                <div class="strategy-card">
+                    <h3>🛡️ Strategy 3: Conservative Growth</h3>
+                    <p><strong>Risk Level:</strong> Low-Moderate</p>
+                    <p><strong>Target Return:</strong> 8-15% annually</p>
+                    <p><strong>Allocation:</strong></p>
+                    <ul>
+                        <li>60% Blue Chip Stocks</li>
+                        <li>30% ETFs</li>
+                        <li>10% Bonds/FDs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📊 Portfolio Allocation Calculator</h2>
+            <div class="calculator">
+                <h3>Calculate Your Investment Allocation</h3>
+                <input type="number" id="investmentAmount" placeholder="Enter your investment amount (₹)" value="8000">
+                <select id="riskProfile">
+                    <option value="aggressive">Aggressive (High Risk, High Return)</option>
+                    <option value="balanced">Balanced (Moderate Risk, Moderate Return)</option>
+                    <option value="conservative">Conservative (Low Risk, Lower Return)</option>
+                </select>
+                <button onclick="calculateAllocation()">Calculate Allocation</button>
+                <div id="allocationResult" class="result" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🔍 Stock Analysis Framework</h2>
+            <div class="stock-analysis">
+                <h3>Before Investing in Any Stock, Check These Fundamentals:</h3>
+                <div class="checklist">
+                    <ul>
+                        <li><strong>P/E Ratio:</strong> Compare with industry average (Lower is generally better)</li>
+                        <li><strong>Revenue Growth:</strong> Look for consistent 15%+ annual growth</li>
+                        <li><strong>Profit Margins:</strong> Check if margins are improving</li>
+                        <li><strong>Debt-to-Equity:</strong> Lower is better (< 0.5 is ideal)</li>
+                        <li><strong>ROE (Return on Equity):</strong> Should be > 15%</li>
+                        <li><strong>Current Ratio:</strong> Should be > 1.5</li>
+                        <li><strong>Market Cap:</strong> Understand the company size</li>
+                        <li><strong>Sector Performance:</strong> Is the sector growing?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📈 Stock Selection Framework</h2>
+            <table class="portfolio-table">
+                <thead>
+                    <tr>
+                        <th>Criteria</th>
+                        <th>Weight</th>
+                        <th>How to Evaluate</th>
+                        <th>Target Range</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Financial Health</td>
+                        <td>30%</td>
+                        <td>P/E, Debt/Equity, Current Ratio</td>
+                        <td>P/E < 25, D/E < 0.5</td>
+                    </tr>
+                    <tr>
+                        <td>Growth Potential</td>
+                        <td>25%</td>
+                        <td>Revenue Growth, Market Share</td>
+                        <td>15%+ annual growth</td>
+                    </tr>
+                    <tr>
+                        <td>Industry Position</td>
+                        <td>20%</td>
+                        <td>Market Leadership, Competitive Advantage</td>
+                        <td>Top 3 in sector</td>
+                    </tr>
+                    <tr>
+                        <td>Technical Analysis</td>
+                        <td>15%</td>
+                        <td>Chart Patterns, Volume, RSI</td>
+                        <td>RSI 30-70, Good Volume</td>
+                    </tr>
+                    <tr>
+                        <td>Management Quality</td>
+                        <td>10%</td>
+                        <td>Track Record, Transparency</td>
+                        <td>Consistent Performance</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>🎯 Current Market Opportunities (July 2025)</h2>
+            <div class="warning">
+                <p><strong>Note:</strong> These are general sectors showing promise. Always do your own research before investing.</p>
+            </div>
+            
+            <div class="strategy-grid">
+                <div class="strategy-card">
+                    <h3>🤖 Technology Sector</h3>
+                    <p><strong>Focus Areas:</strong> AI, Cloud Computing, Cybersecurity</p>
+                    <p><strong>Why Now:</strong> Continued digital transformation and AI adoption</p>
+                    <p><strong>Risk:</strong> High volatility, regulatory changes</p>
+                </div>
+                
+                <div class="strategy-card">
+                    <h3>🏥 Healthcare</h3>
+                    <p><strong>Focus Areas:</strong> Biotech, Medical Devices, Digital Health</p>
+                    <p><strong>Why Now:</strong> Aging population, innovation in treatments</p>
+                    <p><strong>Risk:</strong> Regulatory approval risks</p>
+                </div>
+                
+                <div class="strategy-card">
+                    <h3>🌱 Clean Energy</h3>
+                    <p><strong>Focus Areas:</strong> Solar, Wind, Energy Storage</p>
+                    <p><strong>Why Now:</strong> Government support, cost reductions</p>
+                    <p><strong>Risk:</strong> Policy changes, competition</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📋 Investment Action Plan</h2>
+            <div class="checklist">
+                <h3>Step-by-Step Implementation:</h3>
+                <ul>
+                    <li><strong>Week 1:</strong> Open a trading account with a reputable broker</li>
+                    <li><strong>Week 2:</strong> Research and shortlist 5-8 stocks using our framework</li>
+                    <li><strong>Week 3:</strong> Start with 20% of your capital in your best pick</li>
+                    <li><strong>Week 4:</strong> Add second stock if first performs well</li>
+                    <li><strong>Month 2:</strong> Diversify across 3-4 stocks maximum</li>
+                    <li><strong>Monthly:</strong> Review and rebalance portfolio</li>
+                    <li><strong>Quarterly:</strong> Assess performance and adjust strategy</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>💰 Expected Returns Calculator</h2>
+            <div class="calculator">
+                <h3>Project Your Potential Returns</h3>
+                <input type="number" id="principal" placeholder="Initial Investment (₹)" value="8000">
+                <input type="number" id="returnRate" placeholder="Expected Annual Return (%)" value="20">
+                <input type="number" id="timeMonths" placeholder="Time Period (Months)" value="12">
+                <button onclick="calculateReturns()">Calculate Potential Returns</button>
+                <div id="returnsResult" class="result" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>⚠️ Risk Management Rules</h2>
+            <div class="strategy-grid">
+                <div class="strategy-card">
+                    <h3>🛑 Stop Loss Strategy</h3>
+                    <p>Set stop-loss at 10-15% below purchase price</p>
+                    <p>Never ignore stop-loss - emotions can be costly</p>
+                </div>
+                
+                <div class="strategy-card">
+                    <h3>📊 Position Sizing</h3>
+                    <p>Never put more than 25% in one stock</p>
+                    <p>Start small - increase position if stock performs</p>
+                </div>
+                
+                <div class="strategy-card">
+                    <h3>🎯 Profit Taking</h3>
+                    <p>Take partial profits at 25-30% gains</p>
+                    <p>Let winners run, but secure some gains</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📱 Recommended Tools & Resources</h2>
+            <div class="checklist">
+                <ul>
+                    <li><strong>Broker:</strong> Zerodha, Upstox, or Groww (low brokerage)</li>
+                    <li><strong>Research:</strong> Screener.in, Moneycontrol, Economic Times</li>
+                    <li><strong>Charts:</strong> TradingView, ChartInk</li>
+                    <li><strong>News:</strong> Bloomberg, Reuters, Mint</li>
+                    <li><strong>Learning:</strong> YouTube (CA Rachana Ranade), Books (Intelligent Investor)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="downloadStrategy()">Download Strategy PDF</button>
+            <button class="btn btn-secondary" onclick="printReport()">Print Report</button>
+        </div>
+    </div>
+    
+    <script>
+        function calculateAllocation() {
+            const amount = parseFloat(document.getElementById('investmentAmount').value);
+            const risk = document.getElementById('riskProfile').value;
+            const resultDiv = document.getElementById('allocationResult');
+            
+            if (!amount || amount <= 0) {
+                alert('Please enter a valid investment amount');
+                return;
+            }
+            
+            let allocation = {};
+            
+            switch(risk) {
+                case 'aggressive':
+                    allocation = {
+                        'Growth Stocks (Small/Mid Cap)': Math.round(amount * 0.7),
+                        'Technology Stocks': Math.round(amount * 0.2),
+                        'Emergency Buffer': Math.round(amount * 0.1)
+                    };
+                    break;
+                case 'balanced':
+                    allocation = {
+                        'Large Cap Stocks': Math.round(amount * 0.5),
+                        'Mid Cap Stocks': Math.round(amount * 0.3),
+                        'ETFs/Index Funds': Math.round(amount * 0.2)
+                    };
+                    break;
+                case 'conservative':
+                    allocation = {
+                        'Blue Chip Stocks': Math.round(amount * 0.6),
+                        'ETFs': Math.round(amount * 0.3),
+                        'Bonds/FDs': Math.round(amount * 0.1)
+                    };
+                    break;
+            }
+            
+            let html = '<h4>Your Recommended Allocation:</h4>';
+            for (let category in allocation) {
+                html += `<p><strong>${category}:</strong> ₹${allocation[category]}</p>`;
+            }
+            
+            resultDiv.innerHTML = html;
+            resultDiv.style.display = 'block';
+        }
+        
+        function calculateReturns() {
+            const principal = parseFloat(document.getElementById('principal').value);
+            const rate = parseFloat(document.getElementById('returnRate').value);
+            const months = parseFloat(document.getElementById('timeMonths').value);
+            const resultDiv = document.getElementById('returnsResult');
+            
+            if (!principal || !rate || !months) {
+                alert('Please fill all fields');
+                return;
+            }
+            
+            const monthlyRate = rate / 12 / 100;
+            const futureValue = principal * Math.pow(1 + monthlyRate, months);
+            const totalReturn = futureValue - principal;
+            const returnPercentage = (totalReturn / principal) * 100;
+            
+            let html = `
+                <h4>Projected Returns:</h4>
+                <p><strong>Initial Investment:</strong> ₹${principal.toLocaleString()}</p>
+                <p><strong>Expected Value:</strong> ₹${futureValue.toLocaleString('en-IN', {maximumFractionDigits: 0})}</p>
+                <p><strong>Total Profit:</strong> ₹${totalReturn.toLocaleString('en-IN', {maximumFractionDigits: 0})}</p>
+                <p><strong>Return Percentage:</strong> ${returnPercentage.toFixed(2)}%</p>
+                <p><em>Note: This is a projection based on assumed returns. Actual results may vary.</em></p>
+            `;
+            
+            resultDiv.innerHTML = html;
+            resultDiv.style.display = 'block';
+        }
+        
+        function downloadStrategy() {
+            alert('PDF download feature would be implemented with a backend service. For now, you can print this page to PDF using your browser.');
+        }
+        
+        function printReport() {
+            window.print();
+        }
+        
+        // Initialize with default calculation
+        window.onload = function() {
+            calculateAllocation();
+        };
+    </script>
+</body>
+</html>
